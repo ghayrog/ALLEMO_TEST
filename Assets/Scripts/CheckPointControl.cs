@@ -15,6 +15,7 @@ public class CheckPointControl : MonoBehaviour
 
     void Awake()
     {
+        //Keep checkpoints when scene reloads
         MessageText.Instance.GetComponent<Text>().text = "";
 
         GameObject[] objs = GameObject.FindGameObjectsWithTag("checkpoint");
@@ -37,6 +38,7 @@ public class CheckPointControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Activate checkpoint when entering and show message
         if (other.gameObject == SausageScript.Instance.midBone.gameObject)
         {
             checkPointActive = true;
@@ -47,6 +49,7 @@ public class CheckPointControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //Hide message when exiting checkpoint
         if (other.gameObject == SausageScript.Instance.midBone.gameObject)
         {
             MessageText.Instance.GetComponent<Text>().text = "";
